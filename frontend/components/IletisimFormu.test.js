@@ -97,9 +97,6 @@ test('soyad girilmeden gönderilirse "soyad gereklidir." mesajı render ediliyor
 test("ad,soyad, email render ediliyor. mesaj bölümü doldurulmadığında hata mesajı render edilmiyor.", async () => {
   render(<IletisimFormu />);
 
-  userEvent.type(screen.getByTestId(/ad/i), "Ilhan");
-  userEvent.type(screen.getByTestId(/soyisim/i), "Mansiz");
-  userEvent.type(screen.getByTestId(/email/i), "ilhanmansiz@gmail.com");
   userEvent.type(screen.getByTestId(/mesaj/i), "");
 
   userEvent.click(screen.getByTestId(/gonder/i));
@@ -107,4 +104,14 @@ test("ad,soyad, email render ediliyor. mesaj bölümü doldurulmadığında hata
   expect(screen.queryByText(/mesaj bolumu/i)).not.toBeInTheDocument();
 });
 
-test("form gönderildiğinde girilen tüm değerler render ediliyor.", async () => {});
+test("form gönderildiğinde girilen tüm değerler render ediliyor.", async () => {
+  render(<IletisimFormu />);
+  userEvent.type(screen.getByTestId(/ad/i), "Ilhan");
+  userEvent.type(screen.getByTestId(/soyisim/i), "Mansiz");
+  userEvent.type(screen.getByTestId(/email/i), "ilhanmansiz@gmail.com");
+  userEvent.type(screen.getByTestId(/mesaj/i), "Merhaba");
+
+  userEvent.click(screen.getByTestId(/gonder/i));
+
+  expect(screen.queryAllByText(/hata/i)).toHaveLength(0);
+});
