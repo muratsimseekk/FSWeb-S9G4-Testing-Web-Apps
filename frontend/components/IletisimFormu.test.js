@@ -9,6 +9,7 @@ import {
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import IletisimFormu from "./IletisimFormu";
+import Goruntule from "./Goruntule";
 
 test("hata olmadan render ediliyor", () => {
   render(<IletisimFormu />);
