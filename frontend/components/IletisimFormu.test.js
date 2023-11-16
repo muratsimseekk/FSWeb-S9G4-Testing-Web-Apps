@@ -8,7 +8,12 @@ test("hata olmadan render ediliyor", () => {
   render(<IletisimFormu />);
 });
 
-test("iletişim formu headerı render ediliyor", () => {});
+test("iletişim formu headerı render ediliyor", () => {
+  render(<IletisimFormu />);
+  const header = screen.getByText(/İletişim Formu/i);
+
+  expect(header).toBeInTheDocument();
+});
 
 test("kullanıcı adını 5 karakterden az girdiğinde BİR hata mesajı render ediyor.", async () => {});
 
