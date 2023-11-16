@@ -91,6 +91,7 @@ const IletisimFormu = () => {
           <label htmlFor="soyad">Soyad*</label>
           <input
             onChange={handleChange}
+            data-testid="soyisim"
             id="soyad"
             name="soyad"
             value={form.soyad}
@@ -103,6 +104,7 @@ const IletisimFormu = () => {
           <label htmlFor="email">Email*</label>
           <input
             onChange={handleChange}
+            data-testid="email"
             id="email"
             name="email"
             value={form.email}
@@ -124,7 +126,7 @@ const IletisimFormu = () => {
 
         {displayData && <Goruntule form={form} />}
 
-        <button>Gönder</button>
+        <button data-testid="gonder">Gönder</button>
       </form>
     </div>
   );
