@@ -110,7 +110,7 @@ const IletisimFormu = () => {
             value={form.email}
             placeholder="yüzyılıngolcüsü@hotmail.com"
           />
-          {errors.email && <p data-testid="errorMail">Hata: {errors.email}</p>}
+          {errors.email && <p data-testid="error">Hata: {errors.email}</p>}
         </div>
 
         <div>
@@ -119,6 +119,7 @@ const IletisimFormu = () => {
             onChange={handleChange}
             name="mesaj"
             id="mesaj"
+            data-testid="mesaj"
             value={form.mesaj}
           />
           {errors.mesaj && <p data-testid="error">Error: {errors.mesaj}</p>}
