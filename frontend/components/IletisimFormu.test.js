@@ -15,7 +15,16 @@ test("iletişim formu headerı render ediliyor", () => {
   expect(header).toBeInTheDocument();
 });
 
-test("kullanıcı adını 5 karakterden az girdiğinde BİR hata mesajı render ediyor.", async () => {});
+test("kullanıcı adını 5 karakterden az girdiğinde BİR hata mesajı render ediyor.", async () => {
+  render(<IletisimFormu />);
+
+  const adInput = screen.getByTestId(/ad/i);
+
+  userEvent.type(adInput, "hata");
+
+  const hataMesaji = await screen.getByText(/ad en az 5 karakter olmalıdır./i);
+  expect(hataMesaji).toBeInTheDocument();
+});
 
 test("kullanıcı inputları doldurmadığında ÜÇ hata mesajı render ediliyor.", async () => {});
 
